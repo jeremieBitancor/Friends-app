@@ -9,21 +9,31 @@
 /* Begin PBXBuildFile section */
 		82D2006026741D0C00DBCF38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2005F26741D0C00DBCF38 /* AppDelegate.swift */; };
 		82D2006226741D0C00DBCF38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2006126741D0C00DBCF38 /* SceneDelegate.swift */; };
-		82D2006426741D0C00DBCF38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2006326741D0C00DBCF38 /* ViewController.swift */; };
+		82D2006426741D0C00DBCF38 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2006326741D0C00DBCF38 /* FriendsViewController.swift */; };
 		82D2006726741D0C00DBCF38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82D2006526741D0C00DBCF38 /* Main.storyboard */; };
 		82D2006926741D0D00DBCF38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82D2006826741D0D00DBCF38 /* Assets.xcassets */; };
 		82D2006C26741D0D00DBCF38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82D2006A26741D0D00DBCF38 /* LaunchScreen.storyboard */; };
+		82D2007426741D6800DBCF38 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2007326741D6800DBCF38 /* DataManager.swift */; };
+		82D200772674213D00DBCF38 /* FriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D200762674213D00DBCF38 /* FriendModel.swift */; };
+		82D2007E267428BC00DBCF38 /* FriendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2007C267428BC00DBCF38 /* FriendCollectionViewCell.swift */; };
+		82D2007F267428BC00DBCF38 /* FriendCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82D2007D267428BC00DBCF38 /* FriendCollectionViewCell.xib */; };
+		82D2008126748F9B00DBCF38 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2008026748F9B00DBCF38 /* FriendViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		82D2005C26741D0C00DBCF38 /* Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Friends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D2005F26741D0C00DBCF38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82D2006126741D0C00DBCF38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		82D2006326741D0C00DBCF38 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		82D2006326741D0C00DBCF38 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		82D2006626741D0C00DBCF38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		82D2006826741D0D00DBCF38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82D2006B26741D0D00DBCF38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82D2006D26741D0D00DBCF38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82D2007326741D6800DBCF38 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		82D200762674213D00DBCF38 /* FriendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendModel.swift; sourceTree = "<group>"; };
+		82D2007C267428BC00DBCF38 /* FriendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCollectionViewCell.swift; sourceTree = "<group>"; };
+		82D2007D267428BC00DBCF38 /* FriendCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendCollectionViewCell.xib; sourceTree = "<group>"; };
+		82D2008026748F9B00DBCF38 /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +66,44 @@
 		82D2005E26741D0C00DBCF38 /* Friends */ = {
 			isa = PBXGroup;
 			children = (
+				82D200752674212F00DBCF38 /* Model */,
+				82D200782674282400DBCF38 /* View */,
+				82D200792674282D00DBCF38 /* Controller */,
 				82D2005F26741D0C00DBCF38 /* AppDelegate.swift */,
 				82D2006126741D0C00DBCF38 /* SceneDelegate.swift */,
-				82D2006326741D0C00DBCF38 /* ViewController.swift */,
-				82D2006526741D0C00DBCF38 /* Main.storyboard */,
 				82D2006826741D0D00DBCF38 /* Assets.xcassets */,
 				82D2006A26741D0D00DBCF38 /* LaunchScreen.storyboard */,
 				82D2006D26741D0D00DBCF38 /* Info.plist */,
 			);
 			path = Friends;
+			sourceTree = "<group>";
+		};
+		82D200752674212F00DBCF38 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				82D2007326741D6800DBCF38 /* DataManager.swift */,
+				82D200762674213D00DBCF38 /* FriendModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		82D200782674282400DBCF38 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				82D2006526741D0C00DBCF38 /* Main.storyboard */,
+				82D2007C267428BC00DBCF38 /* FriendCollectionViewCell.swift */,
+				82D2007D267428BC00DBCF38 /* FriendCollectionViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		82D200792674282D00DBCF38 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				82D2006326741D0C00DBCF38 /* FriendsViewController.swift */,
+				82D2008026748F9B00DBCF38 /* FriendViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,6 +163,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82D2007F267428BC00DBCF38 /* FriendCollectionViewCell.xib in Resources */,
 				82D2006C26741D0D00DBCF38 /* LaunchScreen.storyboard in Resources */,
 				82D2006926741D0D00DBCF38 /* Assets.xcassets in Resources */,
 				82D2006726741D0C00DBCF38 /* Main.storyboard in Resources */,
@@ -137,7 +177,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82D2006426741D0C00DBCF38 /* ViewController.swift in Sources */,
+				82D2007E267428BC00DBCF38 /* FriendCollectionViewCell.swift in Sources */,
+				82D200772674213D00DBCF38 /* FriendModel.swift in Sources */,
+				82D2006426741D0C00DBCF38 /* FriendsViewController.swift in Sources */,
+				82D2008126748F9B00DBCF38 /* FriendViewController.swift in Sources */,
+				82D2007426741D6800DBCF38 /* DataManager.swift in Sources */,
 				82D2006026741D0C00DBCF38 /* AppDelegate.swift in Sources */,
 				82D2006226741D0C00DBCF38 /* SceneDelegate.swift in Sources */,
 			);
