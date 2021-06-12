@@ -25,7 +25,6 @@ class DataManager {
                     if let safeData = data {
                         do {
                             let results = try decoder.decode(Friends.self, from: safeData)
-                            print(results)
                             DispatchQueue.main.async {
                                 self.delegate?.didGetFriends(results.results)
                             }

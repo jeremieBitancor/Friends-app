@@ -7,11 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController, DataManagerDelegate {
+class FriendsViewController: UIViewController, DataManagerDelegate {
     
     @IBOutlet weak var friendsCollectionView: UICollectionView!
     var dataManager = DataManager()
     var friends = [Friend]()
+    
+    var portrait: UIImage?
+    var selectedFriend: Friend?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +35,7 @@ class ViewController: UIViewController, DataManagerDelegate {
 
 }
 
-extension ViewController: UICollectionViewDataSource {
+extension FriendsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return friends.count
@@ -47,7 +50,7 @@ extension ViewController: UICollectionViewDataSource {
         
         if let imageUrl = URL(string: friend.picture.large) {
             cell.friendPortrait.loadImage(withUrl: imageUrl)
-            
+
         }
         cell.friendName.text = name
         cell.friendCountry.text = friend.location.country
@@ -57,22 +60,32 @@ extension ViewController: UICollectionViewDataSource {
     
 }
 
-extension ViewController: UICollectionViewDelegate {
+extension FriendsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
+        
+        print(friends[indexPath.row].name.last)
+//        self.delegate?.selectedData(friends[indexPath.row], portrait)
+        selectedFriend = friends[indexPath.row]
+        
+        performSegue(withIdentifier: "ToFriendScreen", sender: self)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! FriendViewController
+        destinationVC.friend = selectedFriend
+    }
+    
 }
 
 extension UIImageView {
     
-    func loadImage(withUrl url: URL ) {
+    func loadImage(withUrl url: URL) {
         DispatchQueue.global().async { [weak self] in
             if let data = try? Data(contentsOf: url) {
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
                         self?.image = image
-                        /// Completion handler to stop the activity indicator
-//                        finished()
+                       
                     }
                 }
             }

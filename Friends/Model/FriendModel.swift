@@ -27,6 +27,8 @@ struct Name: Codable {
 
 struct Location: Codable {
     let street: Address
+    let city: String
+    let state: String
     let country: String
 }
 
@@ -37,6 +39,4 @@ struct Address: Codable {
 
 struct Picture: Codable {
     let large: String
-    let medium: String
-    let thumbnail: String
 }
