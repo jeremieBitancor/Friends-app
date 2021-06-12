@@ -43,12 +43,14 @@ extension ViewController: UICollectionViewDataSource {
         
         let friend = friends[indexPath.row]
         let friendName = friend.name
-        let name = "\(friendName.title)" + " \(friendName.first)" + " \(friendName.last)"
+        let name = " \(friendName.first)" + " \(friendName.last)"
         
-        cell.friendPortrait.image = UIImage(systemName: "person.crop.circle")
+        if let imageUrl = URL(string: friend.picture.large) {
+            cell.friendPortrait.loadImage(withUrl: imageUrl)
+            
+        }
         cell.friendName.text = name
         cell.friendCountry.text = friend.location.country
-        
         return cell
     }
     
@@ -58,5 +60,23 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
+    }
+}
+
+extension UIImageView {
+    
+    func loadImage(withUrl url: URL ) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                        /// Completion handler to stop the activity indicator
+//                        finished()
+                    }
+                }
+            }
+            
+        }
     }
 }
