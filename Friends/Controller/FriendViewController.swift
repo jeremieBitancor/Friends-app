@@ -21,10 +21,11 @@ class FriendViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        /// Set image view to a circle
         portrait.layer.cornerRadius = portrait.frame.height / 2
         portrait.layer.masksToBounds = false
         portrait.clipsToBounds = true
-      
+        
         if let sf = friend {
             name.text = "\(sf.name.first) \(sf.name.last)"
             address.text = "\(sf.location.street.number), \(sf.location.street.name), \(sf.location.city), \(sf.location.state), \(sf.location.country)"
@@ -33,14 +34,14 @@ class FriendViewController: UIViewController, MFMailComposeViewControllerDelegat
             if let imageUrl = URL(string: sf.picture.large) {
                 portrait.loadImage(withUrl: imageUrl)
             }
-           
+            
         }
         
     }
 
     @IBAction func emailTap(_ sender: UIButton) {
+        /// Function for opening mail app when email is tap
         if MFMailComposeViewController.canSendMail() {
-           
             mail.mailComposeDelegate = self
             guard let email = sender.titleLabel?.text else {return}
             mail.setToRecipients([email])            
@@ -50,6 +51,7 @@ class FriendViewController: UIViewController, MFMailComposeViewControllerDelegat
         }
     }
     
+    /// Function that dismiss the email app when finished or canceled
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         mail.dismiss(animated: true, completion: nil)
     }

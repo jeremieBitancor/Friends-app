@@ -10,31 +10,38 @@ import UIKit
 class FriendsViewController: UIViewController, DataManagerDelegate {
     
     @IBOutlet weak var friendsCollectionView: UICollectionView!
+    
     var dataManager = DataManager()
     var friends = [Friend]()
-    
     var portrait: UIImage?
     var selectedFriend: Friend?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        /// Fetch users data on first launch
         dataManager.fetchUsers()
+        /// Set self as delegate
         dataManager.delegate = self
-        
+        /// Set collection view data source
         friendsCollectionView.dataSource = self
+        /// Set collection view delegate
         friendsCollectionView.delegate = self
+        /// Register a custom cell for collection view
         friendsCollectionView.register(UINib(nibName: "FriendCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "FriendCell")
         
     }
 
+    /// Get data from API using delegation
     func didGetFriends(_ friends: [Friend]) {
+        /// Set data to local
         self.friends = friends
+        /// Refresh table view to show the newly fetch data
         friendsCollectionView.reloadData()
     }
 
 }
 
+//MARK: - UICollectionView Data Source
 extension FriendsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -47,24 +54,23 @@ extension FriendsViewController: UICollectionViewDataSource {
         let friend = friends[indexPath.row]
         let friendName = friend.name
         let name = " \(friendName.first)" + " \(friendName.last)"
-        
+        /// Get picture from API and set it
         if let imageUrl = URL(string: friend.picture.large) {
             cell.friendPortrait.loadImage(withUrl: imageUrl)
-
         }
+        
         cell.friendName.text = name
         cell.friendCountry.text = friend.location.country
         return cell
     }
-    
-    
 }
 
+//MARK: - UICollection View Delegate
 extension FriendsViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        print(friends[indexPath.row].name.last)
-//        self.delegate?.selectedData(friends[indexPath.row], portrait)
+       /// Set selected friend to be use on detail view
         selectedFriend = friends[indexPath.row]
         
         performSegue(withIdentifier: "ToFriendScreen", sender: self)
@@ -72,11 +78,14 @@ extension FriendsViewController: UICollectionViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! FriendViewController
+        /// Set friend on detail view
         destinationVC.friend = selectedFriend
     }
     
 }
 
+//MARK: - UIImage View Custom Function
+/// A function that get data from API and set it using UIImageView
 extension UIImageView {
     
     func loadImage(withUrl url: URL) {

@@ -12,10 +12,7 @@ class FriendCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var friendPortrait: UIImageView!
     @IBOutlet weak var friendName: UILabel!
     @IBOutlet weak var friendCountry: UILabel!
-    
-    @IBOutlet weak var sub: UIView!
-    
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         /// Roundcorners

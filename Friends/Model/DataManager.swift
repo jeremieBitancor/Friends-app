@@ -15,6 +15,7 @@ class DataManager {
     
     var delegate: DataManagerDelegate?
     
+    /// Fetch data
     func fetchUsers() {
         
         if let url = URL(string: "https://randomuser.me/api/?results=10") {
@@ -26,6 +27,7 @@ class DataManager {
                         do {
                             let results = try decoder.decode(Friends.self, from: safeData)
                             DispatchQueue.main.async {
+                                /// Set data using delegation
                                 self.delegate?.didGetFriends(results.results)
                             }
                         } catch {
